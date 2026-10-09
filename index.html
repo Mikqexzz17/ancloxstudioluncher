@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anclox Launcher - Anime Games</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="launcher-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>Anclox</span>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li class="active"><a href="#" data-tab="home"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#" data-tab="library"><i class="fa-solid fa-book-journal-whills"></i> Biblioteka</a></li>
+                    <li><a href="#" data-tab="store"><i class="fa-solid fa-store"></i> Sklep</a></li>
+                    <li><a href="#" data-tab="community"><i class="fa-solid fa-users"></i> Społeczność</a></li>
+                    <li><a href="#" data-tab="settings"><i class="fa-solid fa-gear"></i> Ustawienia</a></li>
+                </ul>
+            </nav>
+            <div class="download-manager">
+                <div class="download-info">
+                    <span>Pobieranie...</span>
+                    <span>45%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 45%;"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="search-bar">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" placeholder="Szukaj gier, anime...">
+                </div>
+                <div class="user-profile">
+                    <div class="notifications">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="avatar">
+                        <img src="https://i.pravatar.cc/150?img=32" alt="User Avatar">
+                    </div>
+                    <div class="user-info">
+                        <span class="username">OtakuMaster</span>
+                        <span class="status">Online</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content-area">
+                <!-- Featured Game (Hero Section) -->
+                <section class="featured-game">
+                    <div class="featured-image"></div>
+                    <div class="featured-content">
+                        <span class="tag">Nowość</span>
+                        <h1>Cyber Samurai: Neo Edo</h1>
+                        <p>Zanurz się w cyberpunkowym świecie Neo Edo, walcz kataną i odkrywaj tajemnice.</p>
+                        <div class="actions">
+                            <button class="btn btn-primary btn-play"><i class="fa-solid fa-play"></i> Zagraj teraz</button>
+                            <button class="btn btn-secondary"><i class="fa-solid fa-plus"></i> Do biblioteki</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recommended Games Grid -->
+                <section class="recommended">
+                    <div class="section-header">
+                        <h2>Polecane dla Ciebie</h2>
+                        <a href="#" class="view-all">Zobacz wszystkie</a>
+                    </div>
+                    <div class="games-grid">
+                        <!-- Game Card 1 -->
+                        <div class="game-card">
+                            <div class="game-cover" style="background-color: #ff5e5e;"></div>
+                            <div class="game-info">
+                                <h3>Magical Girl Squad</h3>
+                                <span class="genre">RPG, Akcja</span>
+                            </div>
+                        </div>
+                        <!-- Game Card 2 -->
+                        <div class="game-card">
+                            <div class="game-cover" style="background-color: #5e9cff;"></div>
+                            <div class="game-info">
+                                <h3>Mecha Strike</h3>
+                                <span class="genre">Strategia, Sci-Fi</span>
+                            </div>
+                        </div>
+                        <!-- Game Card 3 -->
+                        <div class="game-card">
+                            <div class="game-cover" style="background-color: #5eff8b;"></div>
+                            <div class="game-info">
+                                <h3>Slice of Life Simulator</h3>
+                                <span class="genre">Symulacja</span>
+                            </div>
+                        </div>
+                        <!-- Game Card 4 -->
+                        <div class="game-card">
+                            <div class="game-cover" style="background-color: #c95eff;"></div>
+                            <div class="game-info">
+                                <h3>Isekai Adventure</h3>
+                                <span class="genre">MMORPG</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
