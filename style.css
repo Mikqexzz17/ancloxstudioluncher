@@ -41,13 +41,18 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center;
     padding: 0 20px 30px;
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+}
+
+.logo-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px;
+    object-fit: contain;
+    /* Invert colors to adapt the logo for dark mode (white bg becomes black, black text becomes white) */
+    /* hue-rotate(180deg) restores the blue color of the original logo */
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
 }
 
 .menu {
