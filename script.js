@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (isEmpty) {
             contentArea.innerHTML = `
-                <div class="empty-state">
-                    <i class="fa-solid fa-folder-open empty-icon"></i>
-                    <h2>Brak zasobów w bazie</h2>
-                    <p>Nie masz jeszcze żadnych zdjęć, modeli 3D ani assetów!</p>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 10px;">
+                <div class="empty-state" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 80vh; color: #a0a0b0;">
+                    <i class="fa-solid fa-folder-open empty-icon" style="font-size: 80px; margin-bottom: 20px; color: var(--accent-secondary); filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.4));"></i>
+                    <h2 style="color: white; font-size: 28px; margin-bottom: 10px;">Brak zasobów w bazie</h2>
+                    <p style="margin-top: 10px; max-width: 500px; line-height: 1.6;">Nie masz jeszcze żadnych zdjęć, modeli 3D ani assetów!</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 10px; max-width: 500px; line-height: 1.6;">
                         Możesz w każdej chwili dodawać pliki ze swojego telefonu lub komputera, edytując plik <strong>resources.json</strong>.
                         Wystarczy, że podasz link (URL) do zasobu udostępnionego w chmurze (np. na GitHubie czy Imgurze).
                     </p>
@@ -258,48 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         contentArea.innerHTML = html;
     }
 
-    // Render Community
-    function renderCommunity() {
-        contentArea.innerHTML = `
-            <div class="settings-container">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
-                    <h2>Społeczność Anclox</h2>
-                    <button class="btn btn-primary"><i class="fa-solid fa-pen"></i> Napisz post</button>
-                </div>
-
-                <div class="feed-item">
-                    <div class="feed-avatar">K</div>
-                    <div class="feed-content" style="flex:1;">
-                        <div style="display:flex; justify-content:space-between;">
-                            <h4>Kira_Player <span style="color:var(--accent-primary); font-size:12px; margin-left:10px;">PRO</span></h4>
-                            <span style="color:#a0a0b0; font-size:12px;">2 godz. temu</span>
-                        </div>
-                        <p style="margin: 10px 0; color: white;">Właśnie skończyłem najnowszą aktualizację do Cyber Samurai! Ta nowa katana jest niesamowita. Ktoś już próbował walczyć z bossem w 3 akcie?</p>
-                        <div style="display:flex; gap:15px; margin-top:10px; font-size:14px;">
-                            <span style="cursor:pointer; color:#ff3366;"><i class="fa-solid fa-heart"></i> 24</span>
-                            <span style="cursor:pointer; color:#a0a0b0;"><i class="fa-solid fa-comment"></i> 5</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="feed-item">
-                    <div class="feed-avatar" style="background:#00f0ff;">A</div>
-                    <div class="feed-content" style="flex:1;">
-                        <div style="display:flex; justify-content:space-between;">
-                            <h4>AnimeFan99</h4>
-                            <span style="color:#a0a0b0; font-size:12px;">Wczoraj</span>
-                        </div>
-                        <p style="margin: 10px 0; color: white;">Tworzę moda do Magical Girl Squad. Będzie można zmienić stroje całej drużyny. Potrzebuję betatesterów!</p>
-                        <div style="display:flex; gap:15px; margin-top:10px; font-size:14px;">
-                            <span style="cursor:pointer; color:#ff3366;"><i class="fa-regular fa-heart"></i> 12</span>
-                            <span style="cursor:pointer; color:#a0a0b0;"><i class="fa-solid fa-comment"></i> 8</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
     // Tab Switching Logic
     const menuItems = document.querySelectorAll('.menu li');
     menuItems.forEach(item => {
@@ -321,8 +279,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderGrid(allGames.slice(0, 2), 'Moja Biblioteka');
                 } else if (tabName === 'store') {
                     renderGrid(allGames, 'Sklep z Grami');
-                } else if (tabName === 'community') {
-                    renderCommunity();
                 } else if (tabName === 'resources') {
                     renderResources();
                 } else if (tabName === 'settings') {
