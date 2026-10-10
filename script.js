@@ -181,6 +181,83 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
 
+    // Render Resources
+    async function renderResources() {
+        let resourcesData = { zdjecia: [], modele_3d: [], assety: [] };
+
+        try {
+            const response = await fetch('resources.json');
+            if (response.ok) {
+                resourcesData = await response.json();
+            }
+        } catch (error) {
+            console.error('Błąd podczas wczytywania resources.json:', error);
+        }
+
+        const isEmpty = resourcesData.zdjecia.length === 0 &&
+                        resourcesData.modele_3d.length === 0 &&
+                        resourcesData.assety.length === 0;
+
+        if (isEmpty) {
+            contentArea.innerHTML = `
+                <div class="empty-state">
+                    <i class="fa-solid fa-folder-open empty-icon"></i>
+                    <h2>Brak zasobów w bazie</h2>
+                    <p>Nie masz jeszcze żadnych zdjęć, modeli 3D ani assetów!</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 10px;">
+                        Możesz w każdej chwili dodawać pliki ze swojego telefonu lub komputera, edytując plik <strong>resources.json</strong>.
+                        Wystarczy, że podasz link (URL) do zasobu udostępnionego w chmurze (np. na GitHubie czy Imgurze).
+                    </p>
+                </div>
+            `;
+            return;
+        }
+
+        function createResourceCard(item) {
+            return `
+                <div class="game-card resource-card">
+                    <img src="${item.imageUrl || 'https://via.placeholder.com/300x150/1a1a2e/ffffff?text=Brak+Podglądu'}" alt="${item.title}" class="game-image">
+                    <div class="game-info">
+                        <div class="game-title">${item.title}</div>
+                        <a href="${item.downloadUrl || '#'}" class="btn btn-primary" style="margin-top: 10px; text-align: center; display: block; font-size: 0.8rem; padding: 5px;" target="_blank"><i class="fa-solid fa-download"></i> Pobierz</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        let html = '<div class="resources-container">';
+
+        if (resourcesData.zdjecia.length > 0) {
+            html += `<h2 style="margin-top: 20px; margin-bottom: 15px;"><i class="fa-solid fa-image"></i> Zdjęcia Anime</h2>`;
+            html += `<div class="games-grid" style="margin-bottom: 30px;">`;
+            resourcesData.zdjecia.forEach(item => {
+                html += createResourceCard(item);
+            });
+            html += `</div>`;
+        }
+
+        if (resourcesData.modele_3d.length > 0) {
+            html += `<h2 style="margin-bottom: 15px;"><i class="fa-solid fa-cube"></i> Modele 3D</h2>`;
+            html += `<div class="games-grid" style="margin-bottom: 30px;">`;
+            resourcesData.modele_3d.forEach(item => {
+                html += createResourceCard(item);
+            });
+            html += `</div>`;
+        }
+
+        if (resourcesData.assety.length > 0) {
+            html += `<h2 style="margin-bottom: 15px;"><i class="fa-solid fa-puzzle-piece"></i> Assety do gier</h2>`;
+            html += `<div class="games-grid" style="margin-bottom: 30px;">`;
+            resourcesData.assety.forEach(item => {
+                html += createResourceCard(item);
+            });
+            html += `</div>`;
+        }
+
+        html += '</div>';
+        contentArea.innerHTML = html;
+    }
+
     // Render Community
     function renderCommunity() {
         contentArea.innerHTML = `
@@ -246,6 +323,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     renderGrid(allGames, 'Sklep z Grami');
                 } else if (tabName === 'community') {
                     renderCommunity();
+                } else if (tabName === 'resources') {
+                    renderResources();
                 } else if (tabName === 'settings') {
                     renderSettings();
                 } else {

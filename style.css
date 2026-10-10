@@ -40,6 +40,7 @@ body {
 
 .logo {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0 20px 30px;
@@ -50,9 +51,19 @@ body {
     height: auto;
     max-height: 50px;
     object-fit: contain;
+    margin-bottom: 5px;
     /* Invert colors to adapt the logo for dark mode (white bg becomes black, black text becomes white) */
     /* hue-rotate(180deg) restores the blue color of the original logo */
     filter: invert(1) hue-rotate(180deg) brightness(1.2);
+}
+
+.logo-subtitle {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .menu {
@@ -336,6 +347,25 @@ body {
 .setting-item p {
     color: #a0a0b0;
     font-size: 14px;
+}
+
+/* Resource tab specific styling */
+.resources-container {
+    padding-bottom: 2rem;
+}
+
+.resource-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resource-card .game-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 
 /* Toggle Switch */
